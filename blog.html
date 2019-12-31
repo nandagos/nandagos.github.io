@@ -1,13 +1,22 @@
 ---
 title: NaN Blog
 ---
-<h1>Latest Posts</h1>
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <p>{{ post.excerpt }}</p>
-    </li>
-  {% endfor %}
-</ul>
+<div class="container">
+
+	<h1 class="m-5 text-center">NaN Blog</h1>
+	
+	{% for post in site.posts %}
+	<div class="card w-100" style="width: 18rem;">
+	  <div class="card-body">
+	    <h5 class="card-title"><a href="{{ post.url }}" class="card-link">{{ post.title }}</a></h5>
+	    <h6 class="card-subtitle mb-2 text-muted">{{ post.date | date_to_string }}</h6>
+	    <p class="card-text">{{ post.excerpt }}</p>
+	    <div class="text-right">
+		    <a href="{{ post.url }}" class="card-link">Read More →</a>
+		</div>
+	  </div>
+	</div>
+	{% endfor %}
+
+</div>
