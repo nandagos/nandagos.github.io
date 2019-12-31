@@ -1,14 +1,28 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
+<div class="container mt-5">
 
-<p>
-  {{ page.date | date_to_string }}
-  {% assign author = site.authors | where: 'short_name', page.author | first %}
-  {% if author %}
-    - <a href="{{ author.url }}">{{ author.name }}</a>
-  {% endif %}
-</p>
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="/">Home</a></li>
+	    <li class="breadcrumb-item"><a href="/blog.html">Blog</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+	  </ol>
+	</nav>
 
-{{ content }}
+	<div class="card bg-light mb-3 w-100">
+	  <div class="card-header">{{ page.title }}</div>
+	  <div class="card-body">
+	  	<h6 class="card-subtitle mb-2 text-muted">
+	  		{{ page.date | date_to_string }}
+	  {% assign author = site.authors | where: 'short_name', page.author | first %}
+	  {% if author %}
+	    - <a href="{{ author.url }}">{{ author.name }}</a>
+	  {% endif %}
+	  	</h6>
+	  	<div class="text-justify card-text">{{ content }}</div>
+	  </div>
+	</div>
+</div>
+
